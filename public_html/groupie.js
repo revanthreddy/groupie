@@ -73,7 +73,7 @@ app.get('/artists/:city/playlist', function (req, res) {
     
     if (!city)
         city = "austin";
-    var echoNestPath = encodeURI('/api/v4/artist/search?api_key=00ZKZFHPDBMHGHB40&format=json&results=10&artist_location='+city);
+    var echoNestPath = encodeURI('/api/v4/artist/search?api_key=00ZKZFHPDBMHGHB40&format=json&results=5&artist_location='+city);
     var options = {
         host: 'developer.echonest.com',
         path: echoNestPath,
@@ -136,8 +136,14 @@ app.get('/artists/:city/playlist', function (req, res) {
                                 }, function (error, response, track) {
                                     if(error)
                                         callback(error);
-                                    geoTrackList.push(JSON.parse(track));
+                                   try {
+                                        geoTrackList.push(JSON.parse(track));
                                     callback();
+                                    }
+                                    catch(err) {
+                                        callback(error);
+                                    }
+                                    
                                 });
                     
                         } , 500);
