@@ -1,6 +1,11 @@
 var express = require('express');
 var app = express();
+var cors = require('cors');
+app.use(cors());
 var server = require('http').createServer(app);
+var Firebase = require('firebase');
+var myRootRef = new Firebase('https://groopy.firebaseio.com');
+myRootRef.set("hello world!");
 
 var http = require('http');
 var config = {rdio_api_key: 'fzcukawmjkemz8bvqf522m37', rdio_api_shared: '9hkN7FEJPn'};
