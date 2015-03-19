@@ -3,9 +3,8 @@ var app = express();
 var cors = require('cors');
 app.use(cors());
 var server = require('http').createServer(app);
-var Firebase = require('firebase');
-var myRootRef = new Firebase('https://groopy.firebaseio.com');
-myRootRef.set("hello world!");
+
+
 
 var http = require('http');
 var config = {rdio_api_key: 'fzcukawmjkemz8bvqf522m37', rdio_api_shared: '9hkN7FEJPn'};
@@ -44,20 +43,6 @@ var token = {
 //}, function (error, response, body) {
 //    console.log(body);
 //});
-
-
-//var geocoder = require('geocoder');
-//geocoder.reverseGeocode( 33.7489, -84.3789, function ( err, data ) {
-//  console.log(data);
-//});
-//rdio.api('fzcukawmjkemz8bvqf522m37', '9hkN7FEJPn', {
-//                method: 'search',
-//                query : 'spoon',
-//                type: 'artist',
-//                count: 1
-//            }, function(err, data){
-//                console.log(data);
-//            });
 
 
 server.listen(3000);
@@ -159,9 +144,6 @@ app.get('/artists/:city/playlist', function (req, res) {
             } , 500);
                 
                 
-                
-                
-                
 
             }, function (err) {
                 // if any of the file processing produced an error, err would equal that error
@@ -187,3 +169,6 @@ app.get('/artists/:city/playlist', function (req, res) {
 
 
 });
+
+
+
