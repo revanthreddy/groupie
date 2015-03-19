@@ -73,12 +73,14 @@ app.get('/', function (req, res) {
 });
 
 app.get('/artists/:city/playlist', function (req, res) {
-
-    var city = req.param('city');
     
+    var city = req.param('city');
+    var startIndex = req.query.start;
+    if(!startIndex)
+        startIndex = 0;
     if (!city)
         city = "austin";
-    var echoNestPath = encodeURI('/api/v4/artist/search?api_key=00ZKZFHPDBMHGHB40&format=json&results=5&artist_location='+city);
+    var echoNestPath = encodeURI('/api/v4/artist/search?api_key=00ZKZFHPDBMHGHB40&format=json&results=5&start='+startIndex+'&artist_location='+city);
     var options = {
         host: 'developer.echonest.com',
         path: echoNestPath,
