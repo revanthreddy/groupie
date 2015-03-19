@@ -129,7 +129,11 @@ app.get('/artists/:city/playlist', function (req, res) {
                                     if(error)
                                         callback(error);
                                    try {
-                                        geoTrackList.push(JSON.parse(track));
+                                       track = JSON.parse(track);
+                                       if(track.result[0].key !== 't12204728')
+                                            geoTrackList.push(track);
+                                        else
+                                            console.log('ignoring t12204728');
                                     callback();
                                     }
                                     catch(err) {
