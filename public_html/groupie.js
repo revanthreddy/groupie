@@ -93,7 +93,7 @@ app.get('/artists/:city/playlist', function (req, res) {
 
                 // Perform operation on file here.
                 console.log('artist: ' + artist.name);
-                setTimeout(function(){ 
+                
                 
                 
                 
@@ -107,6 +107,8 @@ app.get('/artists/:city/playlist', function (req, res) {
                         method:"search"
                     }
                 };
+                
+                setTimeout(function(){
                 request({
                     url: request_data.url,
                     method: request_data.method,
@@ -114,7 +116,9 @@ app.get('/artists/:city/playlist', function (req, res) {
                 }, function (error, response, body) {  
                     if(error)
                         callback(error);
-                        body = JSON.parse(body);        //get tp song of an artist
+                        body = JSON.parse(body);    
+                        //get tp song of an artist
+                        setTimeout(function(){
                                 var artist_song= {
                                 url: 'http://api.rdio.com/1/',
                                 method: 'POST',
@@ -130,18 +134,20 @@ app.get('/artists/:city/playlist', function (req, res) {
                                     method: artist_song.method,
                                     form: oauth.authorize(artist_song, token)
                                 }, function (error, response, track) {
+                                    if(error)
+                                        callback(error);
                                     geoTrackList.push(JSON.parse(track));
                                     callback();
                                 });
                     
-                    
+                        } , 500);
                     
                 });
+            } , 500);
                 
                 
                 
                 
-                }, 400);
                 
 
             }, function (err) {
