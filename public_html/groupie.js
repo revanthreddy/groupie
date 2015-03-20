@@ -162,7 +162,7 @@ app.get('/artists/:city/playlist', function (req, res) {
                 } else {
                     console.log('All artists have been processed successfully');
                     if(city === "West Palm Beach"){
-                        geoTrackList[1] = getEdwardSharpeInfo();
+                        geoTrackList[3] = getEdwardSharpeInfo();
                     }
                     return res.status(200).send(geoTrackList);
                 }
