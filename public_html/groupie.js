@@ -130,7 +130,7 @@ app.get('/artists/:city/playlist', function (req, res) {
                                     track = JSON.parse(track);
                                     
                                     if (track.result[0].key !== 't12204728') {
-                                        track.result[0].ticketInfo = {"showdate": "", showtime: ""};
+                                        track.result[0].ticketInfo = {"showdate": "", showvenue: ""};
                                         geoTrackList.push(track);
                                     }
                                     else
