@@ -161,7 +161,7 @@ app.get('/artists/:city/playlist', function (req, res) {
                     return res.status(400).send("Artist processing failed");
                 } else {
                     console.log('All artists have been processed successfully');
-                    if(city === "west palm beach"){
+                    if(city === "West Palm Beach"){
                         geoTrackList[1] = getEdwardSharpeInfo();
                     }
                     return res.status(200).send(geoTrackList);
